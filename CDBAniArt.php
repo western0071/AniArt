@@ -1,30 +1,28 @@
 <?
-class CDBAniArt {
+class CDBAniArt
+{
     public $host;
     public $user;
     public $password;
+    public $db;
     public $table;
     public $link;
     public $right = 'right';
     public $left = 'left';
     public $id = 'id';
 
-    public function __construct(
-        $host = 'localhost:/tmp/mysql.sock',
-        $user = 'mysql_user',
-        $password = 'mysql_password',
-        $table = 'mysql_password'
-    )
+    public function __construct($host,$user,$password,$table,$db)
     {
         $this->host = $host;
-        $this->user = $host;
-        $this->password = $host;
+        $this->user = $user;
+        $this->password = $password;
+        $this->db = $db;
         $this->table = $table;
     }
 
     function connect()
     {
-        $link = mysqli_connect($this->host, $this->user, $this->password, "my_db");
+        $link = mysqli_connect($this->host, $this->user, $this->password, $this->db);
         if (!$link)
         {
             echo "Код ошибки: " . mysqli_connect_errno() . PHP_EOL;
@@ -49,6 +47,7 @@ class CDBAniArt {
         }
     }
 
+    /*функция поиска всех листьев дерева*/
     function getChildrenAll()
     {
         if($this->connect())
@@ -57,7 +56,8 @@ class CDBAniArt {
         }
     }
 
-    function getLevelNode()
+    /*функция находит всех родителей, до указаного узла*/
+    function getLevelNodes()
     {
         if($this->connect())
         {
@@ -68,6 +68,7 @@ GROUP BY T2.$this->id;");
         }
     }
 
+    /*функция поиска всех листьев дерева*/
     function fromRootToNode($nodeId)
     {
         if($this->connect())
