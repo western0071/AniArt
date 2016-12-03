@@ -1,7 +1,9 @@
 <?
-/**
- * Created by PhpStorm.
- * User: Король
- * Date: 03.12.2016
- * Time: 18:52
- */
+class CDBAniArt {
+    public $var1 = 'hello';
+
+    public function __construct($var1)
+    {
+        $this->var1 = $var1;
+    }
+}
