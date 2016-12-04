@@ -56,7 +56,7 @@ class CDBAniArt
         }
     }
 
-    /*функция находит всех родителей, до указаного узла*/
+    /*функция возвращает уровень узлов в дереве*/
     function getLevelNodes()
     {
         if($this->connect())
@@ -68,7 +68,7 @@ GROUP BY T2.$this->id;");
         }
     }
 
-    /*функция поиска всех листьев дерева*/
+    /*функция находит всех родителей, до указаного узла*/
     function fromRootToNode($nodeId)
     {
         if($this->connect())
